@@ -1,15 +1,19 @@
 # -*- coding: utf-8 -*-
 import os, re
 
+from config import config as config
+from army import army
+
+
 class country:
 	def __init__(self):
+		self.countriesList	= self.get_country_list()
 		pass
 		
 	def get_country(self, gray_map, click_pos):
 		country_id		= self.get_country_id(gray_map, click_pos)
-		country_name	= self.get_country_list()
 		  
-		return country_name[country_id]['name']
+		return self.countriesList[country_id][0]
 	
 	def get_country_id(self, gray_map, click_pos):
 		color	= gray_map.get_at(click_pos)
@@ -20,23 +24,14 @@ class country:
 			return 0
 	
 	def get_country_list(self):
-		readFile	= False
-		list		= {}
-		
-		file		= open(os.path.join("maps", "data.map"), "r")
-		for row in file:
-			row		= row[:-2].split(" ")
-
-			if readFile == True and re.search(r"\[.*\]", row[0]) != None:
-				readFile	= False	
-				break			
-			if row[0] == "[countries]":
-				readFile = True
-				continue
+		read_config	= config()
+		return read_config.read_config("maps", "data.map", "countries")
+	
+	def update_countries(self):
+			self.draw_army2country()
 			
-			if readFile == True and row[0] != "":
-				list[int(row[0])]	= {'name' : row[1] , 'continent' : row[2] }
-		file.close()
-		return list
+	def draw_army2country(self):
+		pass
+			
 			
 		

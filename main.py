@@ -36,8 +36,9 @@ def run_game():
 			if event.type == pygame.QUIT:
 				sys.exit()
 			if event.type == pygame.MOUSEBUTTONDOWN:
-				print countries.get_country(event.pos),
-				print countries.draw_army2country(armie, countries.get_country_id(event.pos))
+				if countries.is_country(countries.get_country_id(event.pos)) == True:
+					print countries.get_country(event.pos),
+					print countries.draw_army2country(armie, countries.get_country_id(event.pos))
 				
 		
 		screen.fill(BG_COLOR)

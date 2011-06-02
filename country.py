@@ -13,7 +13,7 @@ class country:
 		try:
 			return self.countriesList[country_id][0]
 		except:
-			return 
+			return False
 	
 	def get_country_id(self, click_pos):
 		color	= self.gray_map.get_at(click_pos)
@@ -32,6 +32,11 @@ class country:
 			
 	def draw_army2country(self, armie, country_id):
 		return armie.get_army(country_id)
+	
+	def is_country(self, country_id):
+		if country_id > 0:
+			return True
+		return False
 			
 			
 		

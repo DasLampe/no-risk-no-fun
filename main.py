@@ -15,11 +15,13 @@ def run_game():
 	gray_map			= maps.get_gray_map()
 	colored_map			= maps.get_colored_map()
 	
+<<<<<<< HEAD
 	countries			= country(gray_map)
 	continent			= continents(countries)
 	armie				= army(countries)
 	
 	
+161a3e7da7970ff
 	screen_size			= maps.get_mapsize()
 	
 	SCREEN_WIDTH		= screen_size[0]
@@ -27,9 +29,16 @@ def run_game():
 	BG_COLOR 			= 150, 150, 80
 
 	screen 				= pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
+	
+	countries			= country(gray_map, screen)
+	armie				= army(countries)
+	
 	clock 				= pygame.time.Clock()
 	
-	armie.set_army(12, 5)
+	armie.set_army(12, 88)
+	
+	screen.fill(BG_COLOR)
+	screen.blit(colored_map, (0,0))
     
 	while True:
 		clock.tick(50)
@@ -39,16 +48,19 @@ def run_game():
 				sys.exit()
 			if event.type == pygame.MOUSEBUTTONDOWN:
 				if countries.is_country(countries.get_country_id(event.pos)) == True:
+<<<<<<< HEAD
 					print countries.get_country(event.pos),
 					print countries.draw_army2country(armie, countries.get_country_id(event.pos))
 					print continent.get_continent(countries.get_country_id(event.pos))
 				
 		
-		screen.fill(BG_COLOR)
-		screen.blit(colored_map, (0,0))
+
+
+
+
+
 		
+		countries.update_countries(armie)
 		pygame.display.flip()
 
-
-
-run_game()
+un_game()

@@ -11,17 +11,20 @@ class config:
 		
 		file		= open(os.path.join(dir, file), "r")
 		for row in file:
-			row		= row[:-1].split(seperator)
+			row		= row.strip()
+			row		= row.split(seperator)
 
 			if readFile == True and re.search(r"\[.*\]", row[0]) != None:
-				readFile	= False	
+				readFile	= False
 				break			
 			if row[0] == "["+section+"]":
 				readFile = True
 				continue
 			
 			if readFile == True and row[0] != "":
-				list[int(row[0])]	= [row[1] , row[2] ]
+				list[int(row[0])]	= []
+				for data in xrange(0, len(row)-1):
+					list[int(row[0])].append(row[data+1])
 		file.close()
 		return list
 	

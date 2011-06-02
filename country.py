@@ -1,22 +1,22 @@
 # -*- coding: utf-8 -*-
 import os, re
-
-from config import config as config
-from army import army
-
+from config import config
 
 class country:
-	def __init__(self):
+	def __init__(self, gray_map):
+		self.gray_map		= gray_map
 		self.countriesList	= self.get_country_list()
-		pass
 		
-	def get_country(self, gray_map, click_pos):
-		country_id		= self.get_country_id(gray_map, click_pos)
-		  
-		return self.countriesList[country_id][0]
+	def get_country(self, click_pos):
+		country_id		= self.get_country_id(click_pos)
+		
+		try:
+			return self.countriesList[country_id][0]
+		except:
+			return 
 	
-	def get_country_id(self, gray_map, click_pos):
-		color	= gray_map.get_at(click_pos)
+	def get_country_id(self, click_pos):
+		color	= self.gray_map.get_at(click_pos)
 		
 		if color[0] < 255:
 			return color[0]
@@ -27,11 +27,11 @@ class country:
 		read_config	= config()
 		return read_config.read_config("maps", "data.map", "countries")
 	
-	def update_countries(self):
-			self.draw_army2country()
+	def update_countries(self, armie):
+			self.draw_army2country(armie)
 			
-	def draw_army2country(self):
-		pass
+	def draw_army2country(self, armie, country_id):
+		return armie.get_army(country_id)
 			
 			
 		

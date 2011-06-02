@@ -21,6 +21,9 @@ class config:
 				continue
 			
 			if readFile == True and row[0] != "":
-				list[int(row[0])]	= (row[1] , row[2] )
+				list[int(row[0])]	= [row[1] , row[2] ]
 		file.close()
 		return list
+	
+	def append_config(self, dir, file, section, data, seperator=" "):
+		pass

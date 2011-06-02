@@ -31,6 +31,7 @@ class country:
 			self.draw_army2country(armie)
 			
 	def draw_army2country(self, armie, country_id):
+		
 		return armie.get_army(country_id)
 	
 	def is_country(self, country_id):

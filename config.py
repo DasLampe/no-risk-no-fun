@@ -11,7 +11,8 @@ class config:
 		
 		file		= open(os.path.join(dir, file), "r")
 		for row in file:
-			row		= row[:-1].split(seperator)
+			row		= row.strip()
+			row		= row.split(seperator)
 
 			if readFile == True and re.search(r"\[.*\]", row[0]) != None:
 				readFile	= False	

@@ -7,6 +7,7 @@ class country:
 		self.gray_map		= gray_map
 		self.screen			= screen
 		self.countriesList	= self.get_country_list()
+		self.neighborList	= self.get_neighbor_list()
 		
 	def get_country(self, click_pos):
 		country_id		= self.get_country_id(click_pos)
@@ -28,12 +29,15 @@ class country:
 		read_config	= config()
 		return read_config.read_config("maps", "data.map", "countries")
 	
+	def get_neighbor_list(self):
+		read_config	= config()
+		return read_config.read_config("maps", "data.map", "neighbor")
+	
 	def update_countries(self, armie):
 			self.draw_army2country(armie)
 			
 	def draw_army2country(self, armie):
-		for i in xrange(1, len(self.countriesList)):
-			country_id	= i
+		for country_id in self.countriesList.keys():
 			font 		= pygame.font.Font(os.path.join("data", "font", "arial.ttf"), 14)
 			text 		= font.render(str(armie.get_army(country_id)), True, (255,255, 255))
 			circlePos	= (int(self.countriesList[country_id][2]), int(self.countriesList[country_id][3]))
@@ -46,6 +50,11 @@ class country:
 		if country_id > 0:
 			return True
 		return False
-			
+	
+	def is_neighbor(self, country1_id, country2_id):
+		for i in xrange(0, len(self.neighborList[country1_id])-1):
+			if int(self.neighborList[country1_id][i]) == int(country2_id):
+				return True
+		return False
 			
 		

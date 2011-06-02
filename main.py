@@ -42,7 +42,7 @@ def run_game():
 				if countries.is_country(countries.get_country_id(event.pos)) == True:
 					print countries.get_country(event.pos)
 		
-		countries.draw_army2country(armie)
+		countries.update_countries(armie)
 		pygame.display.flip()
 
 run_game()

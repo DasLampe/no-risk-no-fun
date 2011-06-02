@@ -2,7 +2,7 @@
 
 class army:
 	def __init__(self, countries):
-		self.army2country	= countries.get_country_list()
+		self.army2country	= countries.countriesList
 	
 	def set_army(self, country_id, number):
 		if len(self.army2country[country_id]) == 4:

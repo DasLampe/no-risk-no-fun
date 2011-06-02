@@ -7,6 +7,7 @@ from country import country
 from continents import continents
 from map import map
 from army import army
+from players import players
 
 def run_game():
 	pygame.init()
@@ -26,7 +27,7 @@ def run_game():
 	countries			= country(gray_map, screen)
 	armie				= army(countries)
 	continent			= continents(countries)
-
+	player				= players()
 	
 	clock 				= pygame.time.Clock()
 	
@@ -35,6 +36,7 @@ def run_game():
 	screen.fill(BG_COLOR)
 	screen.blit(colored_map, (0,0))
     
+    #Phase 1
 	while True:
 		clock.tick(50)
 
@@ -43,10 +45,14 @@ def run_game():
 				sys.exit()
 			if event.type == pygame.MOUSEBUTTONDOWN:
 				if countries.is_country(countries.get_country_id(event.pos)) == True:
-					print countries.get_country(event.pos),
-					print continent.get_continent(countries.get_country_id(event.pos))
+					pass
 
+		#End Phase 1
+		if player.get_player_army() <= 0:
+			break
+		
 		countries.update_countries(armie)
 		pygame.display.flip()
 
 run_game()
+print "EXIT!"

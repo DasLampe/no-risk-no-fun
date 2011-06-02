@@ -29,14 +29,12 @@ class country:
 	def get_country_list(self):
 		read_config	= config()
 		return read_config.read_config("maps", "data.map", "countries")
-<<<<<<< HEAD
         
 	def update_countries(self, armie):
 			self.draw_army2country(armie)
 		
 	def draw_army2country(self, armie, country_id):
 		return armie.get_army(country_id)
-=======
 	
 	def get_neighbor_list(self):
 		read_config	= config()
@@ -54,23 +52,16 @@ class country:
 			circle		= pygame.draw.circle(self.screen, (0,0,0), circlePos, 11)
 			textPos		= (circle[0]+3, circle[1]+3)
 			self.screen.blit(text, textPos)
->>>>>>> 9492169a7be08f46671356572161a3e7da7970ff
 	
 	def is_country(self, country_id):
 		if country_id > 0:
 			return True
 		return False
-<<<<<<< HEAD
-        
-        
-			
-=======
 	
 	def is_neighbor(self, country1_id, country2_id):
 		for i in xrange(0, len(self.neighborList[country1_id])-1):
 			if int(self.neighborList[country1_id][i]) == int(country2_id):
 				return True
 		return False
->>>>>>> 9492169a7be08f46671356572161a3e7da7970ff
 			
 		

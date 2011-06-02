@@ -1,10 +1,10 @@
 [continents]
-North-America 5 yellow
-South-America 2 red
-Europe 5 blue
-Africa 3 orange
-Asia 7 green
-Australia 2 magenta
+1 North-America 5 yellow
+2 South-America 2 red
+3 Europe 5 blue
+4 Africa 3 orange
+5 Asia 7 green
+6 Australia 2 magenta
 
 [countries]
 1 Alaska 1

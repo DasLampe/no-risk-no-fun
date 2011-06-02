@@ -2,6 +2,7 @@
 import os, re
 from config import config
 
+
 class country:
 	def __init__(self, gray_map):
 		self.gray_map		= gray_map
@@ -26,10 +27,10 @@ class country:
 	def get_country_list(self):
 		read_config	= config()
 		return read_config.read_config("maps", "data.map", "countries")
-	
+        
 	def update_countries(self, armie):
 			self.draw_army2country(armie)
-			
+		
 	def draw_army2country(self, armie, country_id):
 		return armie.get_army(country_id)
 	
@@ -37,6 +38,8 @@ class country:
 		if country_id > 0:
 			return True
 		return False
+        
+        
 			
 			
 		

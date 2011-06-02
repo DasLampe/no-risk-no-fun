@@ -4,6 +4,7 @@ import sys, os
 import pygame
 
 from country import country
+from continents import continents
 from map import map
 from army import army
 
@@ -15,6 +16,7 @@ def run_game():
 	colored_map			= maps.get_colored_map()
 	
 	countries			= country(gray_map)
+	continent			= continents(countries)
 	armie				= army(countries)
 	
 	
@@ -39,6 +41,7 @@ def run_game():
 				if countries.is_country(countries.get_country_id(event.pos)) == True:
 					print countries.get_country(event.pos),
 					print countries.draw_army2country(armie, countries.get_country_id(event.pos))
+					print continent.get_continent(countries.get_country_id(event.pos))
 				
 		
 		screen.fill(BG_COLOR)
